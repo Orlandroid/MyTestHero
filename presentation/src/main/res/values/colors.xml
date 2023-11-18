@@ -19,4 +19,6 @@
     <color name="background">#F2F1F6</color>
     <color name="progress_color">#3949AB</color>
     <color name="status_bar_color">#FF6200EE</color>
+    <color name="button_disable">#BCBCBF</color>
+    <color name="verde_turquesa">#41b8ba</color>
 </resources>

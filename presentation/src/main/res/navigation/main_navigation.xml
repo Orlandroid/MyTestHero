@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/usersFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
-        android:id="@+id/usersFragment"
-        android:name="com.example.presentation.ui.users.UsersFragment"
-        android:label="UsersFragment"
-        tools:layout="@layout/fragment_users">
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.presentation.ui.splashscreen.SplashScreenFragment"
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/fragment_splash_screen">
         <action
-            android:id="@+id/action_usersFragment_to_userDetailFragment"
-            app:destination="@id/userDetailFragment" />
+            android:id="@+id/action_splashScreenFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/userDetailFragment"
-        android:name="com.example.presentation.ui.userDetail.UserDetailFragment"
-        android:label="UserDetailFragment"
-        tools:layout="@layout/fragment_user_detail" />
+    <dialog
+        android:id="@+id/signUpFragment"
+        android:name="com.example.presentation.ui.signup.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_sign_up" />
 </navigation>
