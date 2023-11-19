@@ -4,19 +4,18 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.entities.remote.Feature
-import com.example.domain.entities.remote.Properties
+import com.example.domain.entities.local.Earthquake
 import com.example.presentation.databinding.ItemEarthquakeBinding
 import com.example.presentation.extensions.click
 
 
-class ListAdapter(private val clickOnEarthquake: (Properties) -> Unit) :
+class ListAdapter(private val clickOnEarthquake: (Earthquake) -> Unit) :
     RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
-    private var listOfEarthquake: List<Feature> = arrayListOf()
+    private var listOfEarthquake: List<Earthquake> = arrayListOf()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(list: List<Feature>) {
+    fun setData(list: List<Earthquake>) {
         listOfEarthquake = list
         notifyDataSetChanged()
     }
@@ -24,11 +23,16 @@ class ListAdapter(private val clickOnEarthquake: (Properties) -> Unit) :
 
     class ViewHolder(private val binding: ItemEarthquakeBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(properties: Properties, clickOnEarthquake: (Properties) -> Unit) = with(binding) {
-            tvValueLugar.text = properties.place
-            tvValueMagnitud.text = properties.mag.toString()
+        fun bind(
+            earthquake: Earthquake,
+            clickOnEarthquake: (Earthquake) -> Unit
+        ) = with(binding) {
+            tvValueLugar.text = earthquake.place
+            tvValueMagnitud.text = earthquake.magnitude.toString()
+            tvValueLatitude.text = earthquake.latitude.toString()
+            tvValueLongitude.text = earthquake.longitude.toString()
             root.click {
-                clickOnEarthquake(properties)
+                clickOnEarthquake(earthquake)
             }
         }
     }
@@ -40,10 +44,12 @@ class ListAdapter(private val clickOnEarthquake: (Properties) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listOfEarthquake[position].properties, clickOnEarthquake)
+        val item = listOfEarthquake[position]
+        holder.bind(item, clickOnEarthquake)
     }
 
     override fun getItemCount() = listOfEarthquake.size
+
 
 
 }

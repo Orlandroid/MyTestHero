@@ -34,4 +34,6 @@
     <string name="lugar">Lugar</string>
     <string name="magnitud_de_sismo">Magnitud de sismo</string>
     <string name="coordenadas">Coordenadas</string>
+    <string name="latitud">latitud</string>
+    <string name="longitud">longitud</string>
 </resources>

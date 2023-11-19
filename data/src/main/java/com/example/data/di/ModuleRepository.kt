@@ -1,7 +1,7 @@
 package com.example.data.di
 
 import com.example.data.Repository
-import com.example.domain.LocalDataSource
+import com.example.data.db.EarthquakeDao
 import com.example.domain.RemoteDataSource
 import dagger.Module
 import dagger.Provides
@@ -18,7 +18,7 @@ object ModuleRepository {
     @Singleton
     @Provides
     fun provideRepository(
-        localDataSource: LocalDataSource,
+        earthquakeDao: EarthquakeDao,
         remoteDataSource: RemoteDataSource
-    ): Repository = Repository(localDataSource, remoteDataSource)
+    ): Repository = Repository(earthquakeDao, remoteDataSource)
 }

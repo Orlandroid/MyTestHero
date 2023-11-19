@@ -2,12 +2,13 @@ package com.example.presentation.ui.lista
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.example.domain.entities.remote.Properties
+import com.example.domain.entities.local.Earthquake
 import com.example.presentation.R
 import com.example.presentation.base.BaseFragment
 import com.example.presentation.databinding.FragmentListBinding
 import com.example.presentation.extensions.observeApiResult
 import com.example.presentation.ui.MainActivity
+import com.example.presentation.ui.toEarthquakes
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -36,11 +37,12 @@ class ListFragment : BaseFragment<FragmentListBinding>(R.layout.fragment_list) {
     override fun observerViewModel() {
         super.observerViewModel()
         observeApiResult(viewModel.earthquakesResponse) {
-            adapter.setData(it.features)
+            adapter.setData(it.features.toEarthquakes())
         }
     }
 
-    private fun clickOnEarthquake(feature: Properties) {
+    private fun clickOnEarthquake(earthquake: Earthquake) {
+
     }
 
 }
