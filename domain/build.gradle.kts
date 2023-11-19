@@ -44,4 +44,5 @@ dependencies {
     implementation(Dependencies.ROOM)
     implementation(Dependencies.ROOM_KOTLIN_EXTENSION)
     kapt(Dependencies.ROOM_COMPILER)
+    implementation("com.google.code.gson:gson:2.9.0")
 }

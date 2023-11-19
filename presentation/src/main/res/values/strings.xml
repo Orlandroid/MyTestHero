@@ -21,6 +21,12 @@
     <string name="contrase_a">contraseña</string>
     <string name="confirmar_contrase_a">confirmar contraseña</string>
     <string name="crear_usuario">Crear usuario</string>
-    <string name="eror_passwords">La contraseña no coincide</string>
+    <string name="eror_passwords">Las contraseñas no coincide</string>
     <string name="error">Error</string>
+    <string name="user_or_pwd_wrong">Usuario o contraseña incorrectos</string>
+    <string name="iniciar_sesi_n">Iniciar sesión</string>
+    <string name="seleccionar_fecha">Seleccionar fecha</string>
+    <string name="realizar_consulta">Realizar consulta</string>
+    <string name="mostrar_ltima_consulta">Mostrar última consulta</string>
+    <string name="sismos">Sismos</string>
 </resources>

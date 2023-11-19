@@ -1,36 +1,33 @@
 package com.example.data.preferences
 
 import android.content.SharedPreferences
+import com.example.domain.entities.local.MyUser
+import com.example.domain.extensions.fromJson
+import com.example.domain.extensions.toJson
 import javax.inject.Inject
 
 class LoginPreferences @Inject constructor(sharedPreferences: SharedPreferences) :
     PreferencesManager(sharedPreferences) {
 
     companion object {
-        const val USER_EMAIL = "email"
-        const val USER_LOEGED = "userLoged"
+        const val USER = "user"
     }
 
-    fun saveUserSession() {
-        savePreferenceKey(USER_LOEGED, true)
+    fun saveUser(user: MyUser) {
+        savePreferenceKey(USER, user.toJson())
+    }
+
+    fun getUser(): MyUser? {
+        val userJson = preferences.getString(USER, null)
+        userJson?.let {
+            return userJson.fromJson<MyUser>()
+        }
+        return null
     }
 
     fun destroyUserSession() {
-        removePreferenceKey(USER_LOEGED)
+        removePreferenceKey(USER)
     }
 
-
-    fun getUserSession(): Boolean {
-        return preferences.getBoolean(USER_LOEGED, false)
-    }
-
-
-    fun saveUserEmail(userEmail: String) {
-        savePreferenceKey(USER_EMAIL, userEmail)
-    }
-
-    fun getUserEmail(): String? {
-        return preferences.getString(USER_EMAIL, "")
-    }
 
 }
