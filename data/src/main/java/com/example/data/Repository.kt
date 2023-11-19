@@ -11,5 +11,5 @@ class Repository @Inject constructor(
     private val remoteDataSource: RemoteDataSource
 ) {
 
-    suspend fun getUser() = remoteDataSource.getUser()
+    suspend fun getEarthquakes(startDate: String,endDate:String) = remoteDataSource.getEarthquakes(startDate = startDate,endDate=endDate)
 }

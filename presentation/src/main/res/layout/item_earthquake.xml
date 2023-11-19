@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_lugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/lugar"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_lugar"
+            app:srcCompat="@drawable/user" />
+
+        <TextView
+            android:id="@+id/tv_coordenadas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/coordenadas"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_magnitud"
+            app:layout_constraintTop_toBottomOf="@+id/tv_magnitud" />
+
+        <TextView
+            android:id="@+id/tv_magnitud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/magnitud_de_sismo"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_lugar"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lugar" />
+
+        <TextView
+            android:id="@+id/tv_value_lugar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/empty"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_lugar"
+            app:layout_constraintTop_toTopOf="@+id/tv_lugar" />
+
+        <TextView
+            android:id="@+id/tv_value_magnitud"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/empty"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/tv_value_lugar"
+            app:layout_constraintStart_toEndOf="@+id/tv_magnitud"
+            app:layout_constraintTop_toTopOf="@+id/tv_magnitud" />
+
+        <TextView
+            android:id="@+id/tv_value_coordenadas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/empty"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/tv_value_magnitud"
+            app:layout_constraintStart_toEndOf="@+id/tv_coordenadas"
+            app:layout_constraintTop_toTopOf="@+id/tv_coordenadas" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

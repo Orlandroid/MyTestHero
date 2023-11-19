@@ -1,13 +1,20 @@
 package com.example.data.remote
 
 
-import com.example.domain.entities.remote.User
+import com.example.domain.entities.remote.EarthquakesResponse
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 
 interface Api {
 
-    @GET("users")
-    suspend fun getUser(): List<User>
+    @GET("query")
+    suspend fun getEarthquakes(
+        @Query("format") format: String = "geojson",
+        @Query("limit") limit: String = "20",
+        @Query("starttime") startDate: String,
+        @Query("endtime") endDate: String
+
+    ): EarthquakesResponse
 
 }
