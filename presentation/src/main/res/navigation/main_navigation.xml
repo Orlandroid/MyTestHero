@@ -48,5 +48,9 @@
         android:id="@+id/listFragment"
         android:name="com.example.presentation.ui.lista.ListFragment"
         android:label="ListFragment"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <argument
+            android:name="listArgs"
+            app:argType="string" />
+    </fragment>
 </navigation>

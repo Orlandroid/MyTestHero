@@ -29,4 +29,6 @@
     <string name="realizar_consulta">Realizar consulta</string>
     <string name="mostrar_ltima_consulta">Mostrar última consulta</string>
     <string name="sismos">Sismos</string>
+    <string name="select_date">Selecciona una fecha para poder realizar la consulta</string>
+    <string name="not_imformation">Actualmente no existe información</string>
 </resources>

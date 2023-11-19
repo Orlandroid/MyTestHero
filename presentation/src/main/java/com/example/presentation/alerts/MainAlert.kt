@@ -97,16 +97,19 @@ class MainAlert(
         when (kindOfMessage) {
             0 -> {
                 binding.headerDialog.setCardBackgroundColor(resources.getColor(SUCCESS_MESSAGE_COLOR))
-                binding.titleHeader.text = "Succes"
+                binding.titleHeader.text = "Alerta"
             }
+
             1 -> {
                 binding.headerDialog.setCardBackgroundColor(resources.getColor(WARNING_MESSAGE_COLOR))
                 binding.titleHeader.text = "Warning"
             }
+
             2 -> {
                 binding.headerDialog.setCardBackgroundColor(resources.getColor(ERROR_MESSAGE_COLOR))
                 binding.titleHeader.text = "Error"
             }
+
             3 -> {
                 binding.headerDialog.setCardBackgroundColor(resources.getColor(INFO_MESSAGE_COLOR))
                 binding.titleHeader.text = "Info"

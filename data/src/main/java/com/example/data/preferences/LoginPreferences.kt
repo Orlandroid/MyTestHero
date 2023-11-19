@@ -24,10 +24,5 @@ class LoginPreferences @Inject constructor(sharedPreferences: SharedPreferences)
         }
         return null
     }
-
-    fun destroyUserSession() {
-        removePreferenceKey(USER)
-    }
-
-
+    
 }
