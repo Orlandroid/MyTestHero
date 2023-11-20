@@ -36,4 +36,5 @@
     <string name="coordenadas">Coordenadas</string>
     <string name="latitud">latitud</string>
     <string name="longitud">longitud</string>
+    <string name="error_db">Error en base de datos</string>
 </resources>

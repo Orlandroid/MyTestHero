@@ -11,7 +11,7 @@ interface Api {
     @GET("query")
     suspend fun getEarthquakes(
         @Query("format") format: String = "geojson",
-        @Query("limit") limit: String = "20",
+        @Query("limit") limit: String = "12",
         @Query("starttime") startDate: String,
         @Query("endtime") endDate: String
 

@@ -25,12 +25,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val formatDate by lazy {
         SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     }
+    private val formatDateService by lazy {
+        SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    }
+    private var dateForService = ""
 
     override fun setUpUi() {
         with(binding) {
             btnSelecionarDate.click {
                 showDateDialog {
                     tvTodayDate.text = formatDate.format(it.timeInMillis)
+                    dateForService = formatDateService.format(it.timeInMillis)
                 }
             }
             btnMakeQuery.click {
@@ -43,30 +48,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
     private fun makeQuery() {
-        if (getDateSelectByUser().isEmpty()) {
+        if (dateForService.isEmpty()) {
             showMessage(getString(R.string.select_date))
             return
         }
-        homePreferences.saveLastQuery(getDateSelectByUser())
-        navigateToListView(date = getDateSelectByUser())
+        homePreferences.saveLastQuery(dateForService)
+        navigateToListView(date = dateForService, ListFragment.KindOfQuery.REMOTE)
     }
 
     private fun lastQuery() {
         homePreferences.getLastQuery()?.let {
-            navigateToListView(it)
+            navigateToListView(it, ListFragment.KindOfQuery.LOCAl)
             return
         }
         showMessage(getString(R.string.not_imformation))
     }
 
-    private fun navigateToListView(date: String) {
+    private fun navigateToListView(date: String, myKindOfQuery: ListFragment.KindOfQuery) {
         findNavController().navigate(
             HomeFragmentDirections.actionHomeFragmentToListFragment(
-                ListFragment.ListArgs(date = date).toJson()
+                ListFragment.ListArgs(
+                    date = date, kindOfQuery = myKindOfQuery
+                ).toJson()
             )
         )
     }
 
-    private fun getDateSelectByUser() = binding.tvTodayDate.text.toString()
 
 }
