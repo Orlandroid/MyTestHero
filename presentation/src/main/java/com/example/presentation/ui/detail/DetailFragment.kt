@@ -7,6 +7,7 @@ import com.example.presentation.R
 import com.example.presentation.base.BaseFragment
 import com.example.presentation.databinding.FragmentDetailBinding
 import com.example.presentation.extensions.showLog
+import com.example.presentation.ui.MainActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -17,6 +18,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_detail),
     OnMapReadyCallback {
+
+    override fun configureToolbar() = MainActivity.ToolbarConfiguration(showToolbar = true)
 
     private val args: DetailFragmentArgs by navArgs()
 
@@ -31,12 +34,11 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
     }
 
     override fun onMapReady(mMap: GoogleMap) {
-        showLog("Maps Ready")
         val earthquake = args.earthquake.fromJson<Earthquake>()
         val latLng = LatLng(earthquake.latitude, earthquake.longitude)
         mMap.addMarker(MarkerOptions().position(latLng).title(earthquake.place))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
     }
-
 
 }
