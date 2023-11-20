@@ -29,12 +29,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     }
     private var dateForService = ""
+    private var dateHomeView = ""
 
     override fun setUpUi() {
         with(binding) {
+            if (dateHomeView.isNotEmpty()) {
+                tvTodayDate.text = dateHomeView
+            }
             btnSelecionarDate.click {
                 showDateDialog {
                     tvTodayDate.text = formatDate.format(it.timeInMillis)
+                    dateHomeView = formatDate.format(it.timeInMillis)
                     dateForService = formatDateService.format(it.timeInMillis)
                 }
             }
@@ -61,7 +66,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             navigateToListView(it, ListFragment.KindOfQuery.LOCAl)
             return
         }
-        showMessage(getString(R.string.not_imformation))
     }
 
     private fun navigateToListView(date: String, myKindOfQuery: ListFragment.KindOfQuery) {

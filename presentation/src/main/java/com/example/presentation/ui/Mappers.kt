@@ -6,7 +6,7 @@ import com.example.domain.entities.remote.Feature
 
 fun Feature.toEarthquake(): Earthquake {
     return Earthquake(
-        place = properties.place,
+        place = properties.place ?: "",
         magnitude = properties.mag,
         latitude = geometry.coordinates[0],
         longitude = geometry.coordinates[1]

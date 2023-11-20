@@ -84,10 +84,15 @@ fun Fragment.showErrorDb(
     activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
 }
 
-fun Fragment.showMessage(message: String) {
+fun Fragment.showMessage(message: String, shouldClose: Boolean = false) {
     val dialog = MainAlert(
         kindOfMessage = SUCCESS_MESSAGE,
-        messageBody = message
+        messageBody = message,
+        clickOnAccept = {
+            if (shouldClose) {
+                findNavController().popBackStack()
+            }
+        }
     )
     activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
 }

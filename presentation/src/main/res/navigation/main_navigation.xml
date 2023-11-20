@@ -60,5 +60,9 @@
         android:id="@+id/detailFragment"
         android:name="com.example.presentation.ui.detail.DetailFragment"
         android:label="DetailFragment"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="earthquake"
+            app:argType="string" />
+    </fragment>
 </navigation>

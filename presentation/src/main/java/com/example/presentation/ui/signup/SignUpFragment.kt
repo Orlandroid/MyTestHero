@@ -73,11 +73,13 @@ class SignUpFragment : BottomSheetDialogFragment() {
 
     private fun canEnableButton(): Boolean {
         binding.tvError.gone()
+        binding.inputConfirmPassword.error = null
         if (getUser().isEmpty()) return false
         if (getPassword().isEmpty()) return false
         if (getConfirmPassword().isEmpty()) return false
         if (areEqualPasswords().not()) {
             binding.tvError.visible()
+            binding.inputConfirmPassword.error = " "
             return false
         }
         return true

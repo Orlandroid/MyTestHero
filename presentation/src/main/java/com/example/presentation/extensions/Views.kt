@@ -3,9 +3,12 @@ package com.example.presentation.extensions
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.os.Build
+import android.text.Html
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.core.widget.doOnTextChanged
 import androidx.navigation.NavDirections
@@ -66,6 +69,14 @@ fun TextInputLayout.obtainText(): String {
 fun EditText.doOnTextChange(onTextChange: () -> Unit) {
     doOnTextChanged { text, start, before, count ->
         onTextChange()
+    }
+}
+
+fun TextView.setTextFromHtml(textHtml: String) {
+    text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        Html.fromHtml(textHtml, Html.FROM_HTML_MODE_COMPACT)
+    } else {
+        Html.fromHtml(textHtml)
     }
 }
 
