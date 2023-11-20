@@ -9,6 +9,8 @@ import com.example.presentation.extensions.click
 import com.example.presentation.extensions.doOnTextChange
 import com.example.presentation.extensions.gone
 import com.example.presentation.extensions.obtainText
+import com.example.presentation.extensions.onBackGesture
+import com.example.presentation.extensions.showMessageAcceptCancel
 import com.example.presentation.extensions.visible
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -27,6 +29,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
             } else {
                 binding.tvError.visible()
             }
+        }
+        onBackGesture {
+            requireActivity().finish()
         }
     }
 

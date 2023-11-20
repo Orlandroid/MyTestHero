@@ -1,5 +1,10 @@
 package com.example.presentation.ui.home
 
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
+import androidx.core.os.BuildCompat
 import androidx.navigation.fragment.findNavController
 import com.example.data.preferences.HomePreferences
 import com.example.domain.extensions.toJson
@@ -7,8 +12,11 @@ import com.example.presentation.R
 import com.example.presentation.base.BaseFragment
 import com.example.presentation.databinding.FragmentHomeBinding
 import com.example.presentation.extensions.click
+import com.example.presentation.extensions.onBackGesture
 import com.example.presentation.extensions.showDateDialog
 import com.example.presentation.extensions.showMessage
+import com.example.presentation.extensions.showMessageAcceptCancel
+import com.example.presentation.ui.MainActivity
 import com.example.presentation.ui.lista.ListFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -50,6 +58,30 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 lastQuery()
             }
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback = object : OnBackPressedCallback(
+            true // default to enabled
+        ) {
+            override fun handleOnBackPressed() {
+                showMessageAcceptCancel(message = getString(R.string.close_session)) {
+                    resetActivity()
+                }
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this, // LifecycleOwner
+            callback
+        )
+    }
+
+
+    private fun resetActivity() {
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 
     private fun makeQuery() {

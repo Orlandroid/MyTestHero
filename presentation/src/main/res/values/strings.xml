@@ -39,5 +39,5 @@
     <string name="error_db">Error en base de datos</string>
     <string name="no_data_found">No se encontraron resultados</string>
     <string name="not_pwd_concidence">La contraseña no coincide</string>
-    <string name="google_maps_key">AIzaSyC0fBMLfEvTy-CKJl2Wet0bFxnfclln62g</string>
+    <string name="close_session">Realmente quieres cerrar la sesión actual</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.presentation.extensions
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -97,6 +98,18 @@ fun Fragment.showMessage(message: String, shouldClose: Boolean = false) {
     activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
 }
 
+fun Fragment.showMessageAcceptCancel(message: String, clickOnAccept: () -> Unit) {
+    val dialog = MainAlert(
+        kindOfMessage = SUCCESS_MESSAGE,
+        messageBody = message,
+        clickOnAccept = {
+            clickOnAccept.invoke()
+        },
+        isTwoButtonDialog = true
+    )
+    activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
+}
+
 
 @SuppressLint("SimpleDateFormat")
 fun Fragment.showDateDialog(
@@ -135,3 +148,12 @@ fun Fragment.showDateDialog(
     }
     activity?.supportFragmentManager?.let { datePicker.show(it, "dateDialog") }
 }
+
+fun Fragment.onBackGesture(onBackAction: () -> Unit) {
+    requireActivity().onBackPressedDispatcher
+        .addCallback(this) {
+            isEnabled = false
+            onBackAction.invoke()
+        }
+}
+
